@@ -4,6 +4,8 @@ using namespace std;
 void TimeInput(int&, int&);
 void TimeConversion(int&, char&);
 void TimeOutput(int, int, char);
+void TwoDigit(int);
+void clear();
 
 int main() {
 	while (true) {
@@ -14,6 +16,7 @@ int main() {
 		TimeOutput(hour, min, apm);
 
 		char again;
+		clear();
 		cout << "Do you want to conversion a new time (T/F) ?";
 		cin >> again;
 		if (again == 'F') { break; }
@@ -45,12 +48,27 @@ void TimeConversion(int& h, char& apm) {
 
 }
 void TimeOutput(int h, int m, char apm) {
-	cout << "\n12-hour notation: " << h << ":" << m ;
+	cout << "\n12-hour notation: ";
+	TwoDigit(h);
+	cout << h << ":";
+	TwoDigit(m);
+	cout<< m;
 
 	if (apm == 'A') {
 		cout << " A.M.\n";
 	}
 	if (apm == 'P') {
 		cout << " P.M.\n";
+	}
+}
+
+void TwoDigit(int num) {
+	if (num < 10) {
+		cout << "0";
+	}
+}
+void clear() {
+	while (getchar() != '\n') {
+		continue;
 	}
 }
